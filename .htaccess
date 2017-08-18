@@ -1,0 +1,31 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+# deal with admin first
+RewriteCond %{REQUEST_URI} ^/book_in_the_city/(admin) 
+RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
+RewriteRule ^admin/css/(.*)$ css/$1 [L]
+RewriteRule ^admin/theme/(.*)$ theme/$1 [L]
+RewriteRule ^admin/uploads/(.*)$ uploads/$1 [L]
+RewriteRule ^admin/js/(.*)$ js/$1 [L]
+RewriteRule ^admin/images/(.*)$ images/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/book_in_the_city/backend/web/(assets|css)/  
+RewriteCond %{REQUEST_URI} ^/book_in_the_city/(admin)  
+RewriteRule ^.*$ backend/web/index.php [L]
+
+RewriteCond %{REQUEST_URI} ^/book_in_the_city/(assets|css|js|uploads|images|theme)  
+
+RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
+RewriteRule ^css/(.*)$ css/$1 [L]
+RewriteRule ^js/(.*)$ js/$1 [L]
+RewriteRule ^uploads/(.*)$ uploads/$1 [L]
+RewriteRule ^images/(.*)$ images/$1 [L]
+RewriteRule ^theme/(.*)$ theme/$1 [L]
+RewriteRule ^fonts/(.*)$ fonts/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/book_in_the_city/(frontend|backend)/web/(assets|css|js)/  
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ frontend/web/index.php
