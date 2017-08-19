@@ -54,7 +54,6 @@ echo Editable::widget([
                     ],
                     'options'=>['enctype' => 'multipart/form-data']
                 ]); ?>                
-                <?php echo $form->field($model, 'product_id')->dropDownList(['1' => 'one', '2' => '2']); ?>           
                 
                 <?php echo $form->field($model, 'image')->fileInput(array('accept' => 'image/*')) ?>             
                 <div class="form-group">

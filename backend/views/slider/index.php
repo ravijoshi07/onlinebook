@@ -57,13 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                              return Html::img($url,['alt'=>'yii','class'=>'grid-image']); 
                                                          }
                                             ],
-                                            [
-                                                'attribute' => 'product_id',
-                                                'filterInputOptions' => [
-                                                    'class'       => 'form-control',
-                                                    'placeholder' =>   $model->getAttributeLabel("product_id"),
-                                                 ]
-                                            ],
+                                            
                                             [
                                                 'attribute' => 'created_at',
                                                 'filterInputOptions' => [
@@ -78,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                     'status_change' => function ($url,$model) {
                                                         return Html::a(
                                                             ($model->status==1) ? '<i class="fa fa-dot-circle-o text-success">&nbsp;</i>' : '<i class="fa fa-dot-circle-o text-red">&nbsp;</i>',
-                                                            ['celebrity/status', 'id' => $model->id, 'prevState'=>$model->status],  
+                                                            ['slider/status', 'id' => $model->id, 'prevState'=>$model->status],  
                                                             [
                                                                 'title' => ($model->status==1) ? 'Inactivate' : 'Activate',
                                                                 'data-pjax' => '1',

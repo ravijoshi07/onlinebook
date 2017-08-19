@@ -29,7 +29,7 @@ class Slider extends ActiveRecord
     {
         return [
             
-            [['product_id'], 'required'],
+            //[['product_id'], 'required'],
             ['image', 'image', 'minWidth' => 1600,'minHeight' => 563, 'extensions' => 'jpg, gif, png', 'maxSize' => 1024 * 1024 * 2],
             [['created_at','updated_at'], 'default', 'value' => date('Y-m-d H:i:s')],
         ];
@@ -61,11 +61,6 @@ class Slider extends ActiveRecord
                 //'id' => SORT_ASC,
             ],
             'attributes' => [   
-                'product_id' => [
-                    'asc' => ['product_id' => SORT_ASC, 'product_id' => SORT_ASC],
-                    'desc' => ['product_id' => SORT_DESC, 'product_id' => SORT_DESC],
-                    'default' => SORT_ASC,
-                ], 
                 'created_at' => [
                     'asc' => ['created_at' => SORT_ASC, 'created_at' => SORT_ASC],
                     'desc' => ['created_at' => SORT_DESC, 'created_at' => SORT_DESC],
@@ -84,8 +79,7 @@ class Slider extends ActiveRecord
            
 
         $query->where(['status'=>1])
-            ->andFilterWhere(['like', 'image', $this->image])
-            ->andFilterWhere(['like', 'product_id', $this->product_id]);
+            ->andFilterWhere(['like', 'image', $this->image]);
             
             
         
@@ -99,7 +93,6 @@ class Slider extends ActiveRecord
         return [
             'id' => 'ID',
             'image' => 'Image',
-            'product_id' => 'Product ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'status' => 'Status',

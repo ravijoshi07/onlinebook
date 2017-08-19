@@ -54,6 +54,7 @@ use yii\helpers\Url;
                             ],
                         ],
                         ['label' => 'Manage Slider', 'icon' => 'sliders', 'url' => ['/slider']],
+                        ['label' => 'Manage Author', 'icon' => 'users', 'url' => ['/author']],
                         
                         //['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                         /*[
