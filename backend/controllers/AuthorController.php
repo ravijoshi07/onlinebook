@@ -57,7 +57,7 @@ class AuthorController extends Controller
             'pageSize' => 10,
         ]);
         $author = $query->orderBy('name')
-            ->where(['status'=>1])
+            ->where(['<>','status','2'])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
