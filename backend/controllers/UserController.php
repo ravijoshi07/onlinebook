@@ -59,6 +59,7 @@ class UserController extends CommonController
         ]);
         
         $users = $query->orderBy('username')
+            ->where(['<>','status','2'])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -131,23 +132,22 @@ class UserController extends CommonController
         if(Yii::$app->request->post()){
             
             $model->load(Yii::$app->request->post());
-            
-            if(!empty($model->password_hash)){ 
-                $model->auth_key        =   Yii::$app->security->generateRandomString();
-                $model->op_password     =   $model->password_hash;
-                //$model->setPassword($model->password_hash);
-            } else {
-                $model->setScenario('update');
-                unset($model->auth_key);
-                unset($model->password_hash);
-            }
+            // if(!empty($model->password_hash)){ 
+            //     //$model->auth_key        =   Yii::$app->security->generateRandomString();
+            //     //$model->op_password     =   $model->password_hash;
+            //     //$model->setPassword($model->password_hash);
+            // } else {
+            //     $model->setScenario('update');
+            //     unset($model->auth_key);
+            //     unset($model->password_hash);
+            // }
             
             //prd($model->confirm_password);
             
             if($model->validate()){ 
-                if(!empty($model->password_hash)){ 
-                    $model->setPassword($model->password_hash);
-                }
+                // if(!empty($model->password_hash)){ 
+                //     $model->setPassword($model->password_hash);
+                // }
                 if ($model->save(false)) {
                     echo '1';exit;
                 } else {
@@ -206,8 +206,6 @@ class UserController extends CommonController
         $prevState  =   $this->findModel($id);
         $this->findModel($id)->updateAttributes([
             'status'=>2,
-            'email'=>$prevState->email.'_del',
-            'username'=>$prevState->username.'_del'
         ]);
         return $this->redirect(['index']);
     }

@@ -22,8 +22,8 @@ $fieldOptions2 = [
 <?php //echo "<pre>";print_r($model);exit; ?>
 <div class="login-box">
     <div class="login-logo">
-<!--         <a href="#"><b><?php echo Yii::$app->params['site_name'] ?></b></a> -->
-<?php echo Html::img('@web/uploads/'.'logo.jpg', ['class' => 'img-circle img-responsive img-logo-custom']);?>
+      <a href="#"><b><?php echo Yii::$app->params['site_name'] ?></b></a> 
+<?php //echo Html::img('@web/uploads/'.'logo.jpg', ['class' => 'img-circle img-responsive img-logo-custom']);?>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

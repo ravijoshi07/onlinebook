@@ -10,6 +10,10 @@ $this->title = 'Cms Pages';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<style type="text/css">.grid-view td {
+  white-space:pre-line; // or just 'normal'
+}</style>
+
 <div class="cms-page-index">
 
     
@@ -52,7 +56,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                         ['class' => 'yii\grid\SerialColumn'],
                                         'title',
                                         'unique_name',
-                                        'content:html',
+                                        [
+                                            'attribute' => 'content',
+                                            'format' => 'html',
+                                            'headerOptions' => ['style' => 'width:20%'],
+                                            'contentOptions' => ['style' => 'width:20%;  min-width:20%;  '],
+                                        ],
+                                        //'content:html',
                                         'created_at',
                                         [
                                             'class' => 'yii\grid\ActionColumn',

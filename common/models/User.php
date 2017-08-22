@@ -58,7 +58,7 @@ class User extends ActiveRecord implements IdentityInterface{
             [['username', 'auth_key', 'email', 'first_name', 'last_name'], 'required'],
             
             [['password_hash', 'confirm_password'], 'required', 'on'=>'default'],
-            [['password_hash', 'confirm_password'], 'required', 'on'=>'paswd_update'],
+            [['password_hash'], 'required', 'on'=>'paswd_update'],
             
             [['password_hash', 'confirm_password'], 'string', 'min'=>6, 'skipOnEmpty'=>true, 'on'=>'update'],
             
@@ -281,7 +281,8 @@ class User extends ActiveRecord implements IdentityInterface{
         }
         
         $query = User::find()
-                ->andWhere(['<>','id', $id ]);
+                ->andWhere(['<>','id', $id ])
+                ->andWhere(['<>','status','2']);
         
         // add conditions that should always apply here
         $dataProvider = new ActiveDataProvider([
@@ -326,7 +327,9 @@ class User extends ActiveRecord implements IdentityInterface{
             ->andFilterWhere(['like', 'last_name', $this->last_name])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'last_login', $this->last_login]);
-            
+            //->andFilterWhere(['<>','status','2']);
+        
+              
         
         return $dataProvider;
     }    

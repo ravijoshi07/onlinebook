@@ -18,6 +18,19 @@ use Imagine\Image\BoxInterface;
 
 
 ini_set('default_charset', 'utf-8');
+function prd($data=null){
+    echo '<pre>';   
+    print_r($data);
+    echo '</pre>';  
+    exit;
+    
+}
+function pr($data=null){
+    echo '<pre>';   
+    print_r($data);
+    echo '</pre>';  
+    
+}
 function p($data,$exit=1){
 	echo '<pre>';	
 	print_r($data);

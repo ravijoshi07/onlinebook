@@ -40,13 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php echo $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'username')->textInput(['maxlength' => true,'readonly'=>true]) ?>
 
-    <?php echo $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
     
-    <?php echo $form->field($model, 'confirm_password')->passwordInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'confirm_password')->passwordInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'email')->textInput(['maxlength' => true]) ?>    
+    <?php echo $form->field($model, 'email')->textInput(['maxlength' => true,'readonly'=>true]) ?>    
 
     <div class="form-group">
         <?php echo Html::button($model->isNewRecord ? 'Create' : 'Update', 

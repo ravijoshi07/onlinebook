@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="box-header with-border">
                     <h3 class="box-title">User Listing</h3>
                     
-                    <div class="box-tools pull-right">
+                    <!-- <div class="box-tools pull-right">
                         <?php echo Html::button(
                                 '<i class="fa fa-plus-circle">&nbsp;</i> Add', 
                                 [
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ); 
                         ?>
                     </div>
-                    
+                     -->
                 </div>
                 
                 
