@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Author;
+use common\models\Publication;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -14,7 +14,7 @@ use yii\web\UploadedFile;
 /**
  * UserController implements the CRUD actions for Slider model.
  */
-class AuthorController extends Controller
+class PublicationController extends Controller
 {
     
     /**
@@ -50,21 +50,21 @@ class AuthorController extends Controller
      */
     public function actionIndex()
     {   
-        $query = Author::find();
+        $query = Publication::find();
         $pagination = new Pagination([
             'defaultPageSize' => 10,
             'totalCount' => $query->count(),
             'pageSize' => 10,
         ]);
-        $author = $query->orderBy('name')
+        $publication = $query->orderBy('name')
             ->where(['<>','status','2'])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-        $searchModel = new Author();
+        $searchModel = new Publication();
         $dataProvider = $searchModel->search(Yii::$app->request->get());
         $params = [];
-        $params['author'] = $author;  
+        $params['publication'] = $publication;  
         $params['pagination'] = $pagination; 
         $params['dataProvider'] = $dataProvider;    
         $params['model'] = $searchModel;
@@ -90,7 +90,7 @@ class AuthorController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Author();
+        $model = new Publication();
         if (Yii::$app->request->isPost) {
             $model->load(Yii::$app->request->post());
             if ($model->validate()) {                
@@ -100,7 +100,7 @@ class AuthorController extends Controller
                     $model->image=$name;
                 }
                 if ($model->save(false)) {
-                    Yii::$app->session->setFlash('success', 'Author House saved successfully');
+                    Yii::$app->session->setFlash('success', 'Publication house saved successfully');
                     return $this->redirect(['index']);
                 } else {
                     Yii::$app->session->setFlash('error', 'Could not save the details. Please try again later.');
@@ -128,7 +128,7 @@ class AuthorController extends Controller
             if($model->validate()){ 
                
                 if ($model->save(false)) {
-                    Yii::$app->session->setFlash('success', 'Author House updated successfully');
+                    Yii::$app->session->setFlash('success', 'Publication house updated successfully');
                 } else {
                     Yii::$app->session->setFlash('error', 'Could not update the details. Please try again later.');
                 }
@@ -136,7 +136,7 @@ class AuthorController extends Controller
                 Yii::$app->session->setFlash('error', 'Please rectify the errors');
             }
         }
-        return $this->renderAjax('create', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
@@ -150,7 +150,7 @@ class AuthorController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Author::findOne($id)) !== null) {
+        if (($model = Publication::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

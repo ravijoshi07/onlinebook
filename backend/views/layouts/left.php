@@ -37,13 +37,11 @@ use yii\helpers\Url;
                     'options' => ['class' => 'sidebar-menu'],
                     'items' => [
                         //['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                        ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                         //['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                         ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/site']],
                         ['label' => 'Manage User', 'icon' => 'users', 'url' => ['/user']],
-                        ['label' => 'Manage Cms Pages', 'icon' => 'pagelines', 'url' => ['/cms-page']],
-                        ['label' => 'Manage Celebrities', 'icon' => 'star', 'url' => ['/celebrity']],
-                        ['label' => 'Manage Locations', 'icon' => 'map-marker', 'url' => ['/country']],
+                      
+                        
                         [
                             'label' => 'Product Management',
                             'icon' => 'pie-chart',
@@ -55,6 +53,8 @@ use yii\helpers\Url;
                         ],
                         ['label' => 'Manage Slider', 'icon' => 'sliders', 'url' => ['/slider']],
                         ['label' => 'Manage Author', 'icon' => 'users', 'url' => ['/author']],
+                        ['label' => 'Manage Publications', 'icon' => 'users', 'url' => ['/publication']],
+                        ['label' => 'Contact Us', 'icon' => 'users', 'url' => ['/contactus']],
                         
                         //['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                         /*[
