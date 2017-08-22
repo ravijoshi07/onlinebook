@@ -12,6 +12,8 @@ use app\models\ChangePassword;
 use common\models\Setting;
 use common\components\CommonController;
 use common\models\User;
+use common\models\Publication;
+use common\models\Author;
 use yii\web\UploadedFile;
 /**
  * Site controller
@@ -66,7 +68,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $totalPublication=Publication::find()->where(['<>','status',2])->count();
+        $totalUser=User::find()->where(['<>','status',2])->andWhere(['=','user_type',1])->count();
+        $totalAuthor=Author::find()->where(['<>','status',2])->count();
+        return $this->render('index', [
+            'totalPublication' => $totalPublication,'totalUser' => $totalUser,'totalAuthor' => $totalAuthor]);
     }
 
     /**
