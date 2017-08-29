@@ -25,13 +25,21 @@ class Slider extends ActiveRecord
     /**
      * @inheritdoc
      */
+        public function scenarios() {
+        $scenarios = parent::scenarios();
+        $scenarios['update'] = ['image',];
+        return $scenarios;
+    }
+
     public function rules()
     {
         return [
             
-            //[['product_id'], 'required'],
-            ['image', 'image', 'minWidth' => 1600,'minHeight' => 563, 'extensions' => 'jpg, gif, png', 'maxSize' => 1024 * 1024 * 2],
-            [['created_at','updated_at'], 'default', 'value' => date('Y-m-d H:i:s')],
+            
+            [['image',], 'required', 'on'=>'default'],
+            
+            ['image', 'image', 'extensions' => 'jpg, gif, png', 'maxSize' => 1024 * 1024 * 2],
+            //[['created_at','updated_at'], 'default', 'value' => date('Y-m-d H:i:s')],
         ];
     }
      /**
@@ -45,7 +53,7 @@ class Slider extends ActiveRecord
     {
         
         
-        $query = Slider::find()->where(['status'=>1]);
+        $query = Slider::find()->where(['<>','status',2]);
                 
         
         // add conditions that should always apply here
@@ -78,7 +86,7 @@ class Slider extends ActiveRecord
         }
            
 
-        $query->where(['status'=>1])
+        $query->where(['<>','status',2])
             ->andFilterWhere(['like', 'image', $this->image]);
             
             

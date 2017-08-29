@@ -30,7 +30,7 @@ class ContactUs extends ActiveRecord
         return [
             
             [['name','email','message'], 'required'],
-            [['created_at','updated_at'], 'default', 'value' => date('Y-m-d H:i:s')],
+           // [['created_at','updated_at'], 'default', 'value' => date('Y-m-d H:i:s')],
         ];
     }
      /**

@@ -67,7 +67,7 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
-    {
+    {   
         $totalPublication=Publication::find()->where(['<>','status',2])->count();
         $totalUser=User::find()->where(['<>','status',2])->andWhere(['=','user_type',1])->count();
         $totalAuthor=Author::find()->where(['<>','status',2])->count();

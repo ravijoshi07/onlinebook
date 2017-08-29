@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+$this->title="Dashboard";
 ?>
 <!-- Main content -->
 <section class="content">

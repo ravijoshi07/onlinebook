@@ -44,7 +44,7 @@ class CmsPage extends ActiveRecord
             [['unique_name'], 'unique'],
             [['title'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            [['created_at','updated_at'], 'default', 'value' => date('Y-m-d H:i:s')],
+      //      [['created_at','updated_at'], 'default', 'value' => date('Y-m-d H:i:s')],
             
             //['status', 'in', 'range' => [self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
@@ -156,7 +156,6 @@ class CmsPage extends ActiveRecord
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'unique_name', $this->unique_name])
             ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'created_at', $this->created_at]);
             
         
         return $dataProvider;

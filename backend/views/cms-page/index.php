@@ -63,7 +63,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'contentOptions' => ['style' => 'width:20%;  min-width:20%;  '],
                                         ],
                                         //'content:html',
-                                        'created_at',
+                                        [
+                                                'attribute' => 'created_at',
+                                                'filter'=>false,
+                                                'filterInputOptions' => [
+                                                    'class'       => 'form-control',
+                                                    'placeholder' =>   $model->getAttributeLabel("created_at"),
+                                                 ]
+                                        ],
                                         [
                                             'class' => 'yii\grid\ActionColumn',
                                             //'template' => '{status_change} {view} {update} {delete}',

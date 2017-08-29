@@ -143,7 +143,8 @@ class UserController extends CommonController
             // }
             
             //prd($model->confirm_password);
-            
+            $model->username=$model->oldAttributes['username'];
+            $model->email=$model->oldAttributes['email'];
             if($model->validate()){ 
                 // if(!empty($model->password_hash)){ 
                 //     $model->setPassword($model->password_hash);

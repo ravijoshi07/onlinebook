@@ -22,11 +22,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h3 class="box-title">slider Listing</h3>
                     
                     <div class="box-tools pull-right">
-                        <?php echo
-                                Html::a(
-                                        'Create Slider', ['slider/create'], ['class' => 'btn btn-primary btn-flat']
-                                )
-                                ?>
+                                 <?php echo Html::a(
+                                '<i class="fa fa-plus-circle">&nbsp;</i> Add', Yii::$app->urlManager->createUrl('slider/create'),
+                                   [ 'title' => 'Create Slider', 
+                                    'class' => 'btn btn-primary btn-flat',
+                                    'id'=>'createBtn'
+                                ]
+                            ); 
+                        ?>
                     </div>
                     
                 </div>

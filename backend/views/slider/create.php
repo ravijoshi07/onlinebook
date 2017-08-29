@@ -54,8 +54,13 @@ echo Editable::widget([
                     ],
                     'options'=>['enctype' => 'multipart/form-data']
                 ]); ?>                
-                
-                <?php echo $form->field($model, 'image')->fileInput(array('accept' => 'image/*')) ?>             
+                 <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-9">      
+                  
+                 <?php echo Html::img('@web/uploads/banner/'.$model->image, ['class' => 'slider-image']); ?>
+                  </div>
+                  </div>
+                        <?php echo $form->field($model, 'image')->fileInput(array('accept' => 'image/*')) ?>             
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-9">
                         <?= Html::submitButton('Update', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>

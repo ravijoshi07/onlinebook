@@ -51,6 +51,7 @@ use yii\helpers\Url;
                                 ['label' => 'Options', 'icon' => 'map-signs', 'url' => ['/option'],]
                             ],
                         ],
+                        ['label' => 'Manage CMS ', 'icon' => 'page', 'url' => ['/cms-page']],
                         ['label' => 'Manage Slider', 'icon' => 'sliders', 'url' => ['/slider']],
                         ['label' => 'Manage Author', 'icon' => 'users', 'url' => ['/author']],
                         ['label' => 'Manage Publications', 'icon' => 'users', 'url' => ['/publication']],

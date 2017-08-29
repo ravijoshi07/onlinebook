@@ -22,11 +22,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h3 class="box-title">Author Listing</h3>
                     
                     <div class="box-tools pull-right">
-                        <?php echo
-                                Html::a(
-                                        'Create Author', ['author/create'], ['class' => 'btn btn-primary btn-flat']
-                                )
-                                ?>
+                     <?php echo Html::a(
+                                '<i class="fa fa-plus-circle">&nbsp;</i> Add', Yii::$app->urlManager->createUrl('author/create'),
+                                [
+
+                                    'title' => 'Create Author', 
+                                    'class' => ' btn btn-primary btn-flat',
+                                    'id'=>'createBtn'
+                                ]
+                            ); 
+                        ?>
+                   
                     </div>
                     
                 </div>

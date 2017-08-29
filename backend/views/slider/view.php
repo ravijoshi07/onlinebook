@@ -16,14 +16,12 @@ $this->params['breadcrumbs'][] = 'View Slider : ';
         'model' => $model,
         'attributes' => [
             'id',
-            'image',
                 [
                     'attribute' =>  'image',
                     'format'    =>  'image',
                     'filter'    =>  '',
                     'value'     =>  function($data) { return \Yii::$app->request->BaseUrl.'/uploads/banner/'.$data->image; }
                 ],
-            'product_id',
             'created_at',
             'updated_at',
         ],

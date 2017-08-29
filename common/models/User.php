@@ -59,7 +59,8 @@ class User extends ActiveRecord implements IdentityInterface{
             
             [['password_hash', 'confirm_password'], 'required', 'on'=>'default'],
             [['password_hash'], 'required', 'on'=>'paswd_update'],
-            
+              ['image', 'image', 'minWidth' => 50,'minHeight' => 50, 'extensions' => 'jpg, gif, png', 'maxSize' => 1024 * 1024 * 2,'on'=>['adminedit']],
+
             [['password_hash', 'confirm_password'], 'string', 'min'=>6, 'skipOnEmpty'=>true, 'on'=>'update'],
             
             [['confirm_password'], 'compare', 'compareAttribute' => 'password_hash'],
@@ -89,8 +90,8 @@ class User extends ActiveRecord implements IdentityInterface{
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_UNACTIVE]],
             ['activation_code', 'default', 'value' => $this->getActivationCode()],
             [['created_at','updated_at'], 'default', 'value' => date('Y-m-d H:i:s')],
-            [['auth_key','imageFiles'],'safe','on'=>['adminedit']],
-            ['imageFiles', 'image', 'minWidth' => 50,'minHeight' => 50, 'extensions' => 'jpg, gif, png', 'maxSize' => 1024 * 1024 * 2,'on'=>['adminedit']],
+            [['auth_key'],'safe','on'=>['adminedit']],
+          
         ];
     }
     

@@ -57,7 +57,7 @@ class SliderController extends Controller
             'pageSize' => 10,
         ]);
         $slider = $query->orderBy('image')
-            ->where(['status'=>1])
+            ->where(['<>','status',2])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -124,9 +124,16 @@ class SliderController extends Controller
     {
         $model = $this->findModel($id);
         if(Yii::$app->request->post()){
+            $model->setScenario('update');
             $model->load(Yii::$app->request->post());
             if($model->validate()){ 
-               
+                $model->imageFiles = UploadedFile::getInstance($model, 'image');
+                if(!empty($model->imageFiles)){
+                    $name=$model->upload();
+                    $model->image=$name;
+                }else{
+                       $model->image   =   $model->oldAttributes['image'];
+                }
                 if ($model->save(false)) {
                     Yii::$app->session->setFlash('success', 'Slider updated successfully');
                 } else {

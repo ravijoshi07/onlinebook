@@ -136,7 +136,7 @@ class AuthorController extends Controller
                 Yii::$app->session->setFlash('error', 'Please rectify the errors');
             }
         }
-        return $this->renderAjax('create', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
